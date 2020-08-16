@@ -1,0 +1,18 @@
+==================================================
+APPLICATION			TOOL-TYPE		DESCRIPTION
+===========			==========		==============
+ether-wake			terminal		wake on lan tool
+-----------			-----------		---------------
+ncdu				disk			file-size browser in terminal
+smartmontools		disk			smartctl show S.M.A.R.T and test disks
+pydf				disk			df -h alternative show free space on disks
+-----------			----------		---------------
+macchanger			ecurity			ange your MAC address 
+-----------			----------		---------------
+mtr					network			my trace-route
+
+=========================================================
+SERVER SECURITY TOOLS 			DESCRIPTINO
+==========================		=========================
+mod_evasive.x86_64	server		DDOS protection for Apache
+mod_qos.x86_64		server		Quality of Services - Erőforrás garantáló tool az adott szolgáltatások felé.

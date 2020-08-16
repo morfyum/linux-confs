@@ -1,0 +1,6 @@
+# 000_ROOT_BASHRC_ROOT_BASHRC
+#################
+#Root prompt color
+export PS1='\[\e[1;31m\][\u@\h \W]\$\[\e[0m\] '
+#################
+# 000_ROOT_BASHRC_ROOT_BASHRC_END

@@ -1,0 +1,14 @@
+# 000_WELCOME_OPT
+#################
+
+# This system managed by linux-confs
+# linux-confs is an easier Ansible alternative
+
+# WHAT DIFF:
+ - pure bash scripts
+ - modify complete parts, not only dedicated rows
+ - smaller
+ - easier to learn
+
+#################
+# 000_WELCOME_OPT_END

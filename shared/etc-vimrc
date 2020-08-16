@@ -1,0 +1,7 @@
+" 000_VIMRC_CONF
+"#################
+set number
+set tabstop=4
+color ron
+"#################
+" 000_VIMRC_CONF_END

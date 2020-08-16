@@ -1,0 +1,12 @@
+# 000_GLOBAL_BASHRC_ETC_BASHRC
+#################
+#All user prompt color
+export PS1='\[\e[0;36m\][\u@\h \W]\$\[\e[0m\] '
+#Aliases
+alias sudo='sudo '
+alias vi='vim'
+alias open='gedit'
+alias marsleep='echo "systemctl suspend -i" | sudo at'
+alias fstype='lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINT'
+#################
+# 000_GLOBAL_BASHRC_ETC_BASHRC_END
