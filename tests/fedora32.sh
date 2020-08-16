@@ -1,5 +1,9 @@
 #!/bin/bash
 
+source ../functions/rewrite_data.sh
+#source ../functions/do-or-not-to-do.sh
+#source ../functions/touch-file.sh
+
 array_execute=(
 	'yes'		# 01
 	'yes'		# 02
@@ -7,6 +11,14 @@ array_execute=(
 	'test'		# 04
 	'no'		# 05
 )
+# array for specify what function you need for execution TODO OR OTHER CONCEPT
+#array_function=(
+#	'rewrite_data'
+#	'rewrite_data'
+#	'rewrite_data'
+#	'rewrite_data'
+#	'rewrite_data'
+#)
 array_machine=(
 	'local'
 	'local'
@@ -30,9 +42,9 @@ array_path=(
 	'/eee/'
 )
 array_read=(
-	'./shared/global-bashrc'
-	'./shared/root-bashrc'
-	'./shared/etc-vimrc'
+	'../shared-data/global-bashrc'
+	'../shared-data/root-bashrc'
+	'../shared-data/etc-vimrc'
 	'ddd_read'
 	'eee_read'
 )
@@ -51,4 +63,5 @@ array_end=(
 	'eee_end'
 )
 
-source ./array.sh
+
+function_rewrite_data_main

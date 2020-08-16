@@ -10,6 +10,7 @@ pydf				disk			df -h alternative show free space on disks
 macchanger			ecurity			ange your MAC address 
 -----------			----------		---------------
 mtr					network			my trace-route
+net-tools			network			package of "route" command, show gataway, ...etc
 
 =========================================================
 SERVER SECURITY TOOLS 			DESCRIPTINO

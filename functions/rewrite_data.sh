@@ -7,7 +7,9 @@ set -o nounset
 #set -x
 
 # array_execute parameters: yes = Execute! | no = No execution | test or testing = Write output without execution
+# DATA.SH ARRAYS HERE BEFORE CODE IS RESTRUCTURED! 
 
+# SUB FUNCTION
 function function_error_test {
 	if [ $? -eq 0 ];
 	then
@@ -17,6 +19,7 @@ function function_error_test {
 	fi
 }
 
+# SUB FUNCTION
 function function_case_test {
 
 	echo "  FUNCTION CASE TEST..."
@@ -62,6 +65,49 @@ function function_case_test {
 
 }
 
+# SUB FUNCTION
+function function_array_read_test {
+	if [ -f ${array_read[$i]} ];
+	then
+		echo "    [ OK ] array_read"
+	else
+		echo "    [ FAILED ] File not found on path: ${array_read[$i]}"
+		exit
+	fi
+}
+
+function function_array_path_test {
+	if [ -f ${array_path[$i]} ];
+	then
+		echo "    [ OK ] array_path"
+	else
+		echo "    [ FAILED ] File to operate, not available: ${array_path[$i]}"
+		exit
+	fi
+}
+
+function function_array_start_test {
+	grep -wq "${array_start[$i]}" ${array_read[$i]}
+	if [ $? -eq 0 ];
+	then
+		echo "    [ OK ] array_start"
+	else
+		echo "    [ FAILED ] array_start not exist: ${array_start[$i]}"
+	fi
+}
+
+function function_array_end_test {
+	grep -wq "${array_end[$i]}" ${array_read[$i]}
+	if [ $? -eq 0 ];
+	then
+		echo "    [ OK ] array_end"
+	else
+		echo "    [ FAILED ] array_end not exist: ${array_end[$i]}"
+	fi
+}
+
+# MAIN FUNCTION
+function function_rewrite_data_main {
 
 ## get length of $array
 length=${#array_execute[@]}
@@ -78,6 +124,12 @@ echo "==================="
 		
 		if [ ${array_machine[$i]} = "local" ];
 		then
+			echo "  TESTS"
+			function_array_read_test
+			function_array_path_test
+			function_array_start_test
+			function_array_end_test
+
 			echo "  EXECUTE: ${array_execute[$i]}"
 			echo "  MACHINE: ${array_machine[$i]}"
 			echo "  PATH_FL: ${array_path[$i]}"
@@ -86,7 +138,14 @@ echo "==================="
 			echo "  FILE_EN: ${array_end[$i]}"
 			#function_case_test
 		else
-			echo "  Remote execute: TODO"
+			echo "  Remote execute: TODO" # TODO!
+			
+			echo "  TESTS" # REMOTE TESTS TODO!
+			function_array_read_test
+			function_array_path_test
+			function_array_start_test
+			function_array_end_test
+			
 			echo "  EXECUTE: ${array_execute[$i]}"
 			echo "  MACHINE: ${array_machine[$i]}"
 			echo "  PATH_FL: ${array_path[$i]}"
@@ -106,7 +165,9 @@ echo "==================="
 		echo "  FILE_ST: ${array_start[$i]}"
 		echo "  FILE_EN: ${array_end[$i]}"
 	else
-		echo "  Not ready to execute"
+		echo "  Not ready to execution"
 	fi
 	echo ""
 done
+
+}
