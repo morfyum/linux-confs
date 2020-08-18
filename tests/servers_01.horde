@@ -1,0 +1,10 @@
+remote_machine_ip (
+	"192.168.1.120"
+	"192.168.1.121"
+	"192.168.1.122"
+)
+remote_machine_user (
+	'tester'
+	'tester'
+	'tester'
+)

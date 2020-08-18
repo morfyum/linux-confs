@@ -1,9 +1,3 @@
-#!/bin/bash
-
-source ../functions/rewrite_data.sh
-#source ../functions/do-or-not-to-do.sh
-#source ../functions/touch-file.sh
-
 machine="local"
 remote_user=""
 
@@ -38,9 +32,9 @@ array_path=(
 )
 # array_read >> array_read_input # read_input is can be any type of data: file, or hardcode
 array_read=(
-	'../shared-data/global-bashrc'	# 01
-	'../shared-data/root-bashrc'	# 02
-	'../shared-data/etc-vimrc'		# 03
+	'./shared-data/global-bashrc'	# 01
+	'./shared-data/root-bashrc'	# 02
+	'./shared-data/etc-vimrc'		# 03
 	'ddd_read'						# 04
 	'eee_read'						# 05
 )
@@ -59,6 +53,3 @@ array_end=(
 	'ddd_end'								# 04
 	'eee_end'								# 05
 )
-
-
-function_rewrite_data_main

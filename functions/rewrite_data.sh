@@ -1,8 +1,8 @@
 #!/bin/bash
 # Exit when fails
-set -o errexit
+#set -o errexit
 # Exit when use Undeclared variable
-set -o nounset
+#set -o nounset
 # Set debuggin mod
 #set -x
 
@@ -20,6 +20,7 @@ function function_error_test {
 }
 
 # SUB FUNCTION
+# REWRITE_DATA FUNCTION 
 function function_case_test {
 
 	echo "  FUNCTION CASE TEST..."
@@ -41,11 +42,11 @@ function function_case_test {
 				echo "      $(function_error_test)"
 			;;
 			1)
-				echo "    array_end FAILED: ${array_end[$i]}"
+				echo "    [ FAILED ] array_end: ${array_end[$i]}"
 				echo "    Skip task..."
 			;;
 			*)
-				echo "    Something went wrong!"
+				echo "    [ FAILED ] Something went wrong!"
 				echo "    Skip task..."
 			;;
 			esac
@@ -82,7 +83,7 @@ function function_array_path_test {
 		echo "    [ OK ] array_path"
 	else
 		echo "    [ FAILED ] File to operate, not available: ${array_path[$i]}"
-		exit
+		#exit
 	fi
 }
 
@@ -122,7 +123,20 @@ echo "==================="
 	then
 		echo "  Ready to Execute"
 		
-		if [ ${array_machine[$i]} = "local" ];
+		if [ ${array_function[$i]} = "rewrite_data" ];
+		then
+			echo "  CALL: Rewrite-data"
+		elif [ ${array_function[$i]} = "user-question" ];
+		then
+			echo "  CALL: question"
+		elif [ ${array_function[$i]} = "touch-file" ];
+		then
+			echo "  CALL: touch-file"
+		else
+			echo "  Undefined function... exit"
+		fi
+		
+		if [ $machine = "local" ];
 		then
 			echo "  TESTS"
 			function_array_read_test
@@ -131,7 +145,7 @@ echo "==================="
 			function_array_end_test
 
 			echo "  EXECUTE: ${array_execute[$i]}"
-			echo "  MACHINE: ${array_machine[$i]}"
+			echo "  MACHINE: $machine"
 			echo "  PATH_FL: ${array_path[$i]}"
 			echo "  READ_FL: ${array_read[$i]}"
 			echo "  FILE_ST: ${array_start[$i]}"
@@ -139,15 +153,23 @@ echo "==================="
 			#function_case_test
 		else
 			echo "  Remote execute: TODO" # TODO!
-			
 			echo "  TESTS" # REMOTE TESTS TODO!
 			function_array_read_test
 			function_array_path_test
 			function_array_start_test
 			function_array_end_test
 			
+			#ping -c 1 -W 3 $machine 2>&1 > /dev/null
+			if [ $? -eq 0 ];
+			then
+				echo "  [ OK ] ping server"
+			else
+				echo "  [ FAIL ] Unreachable... SKIP"
+			fi
+			
 			echo "  EXECUTE: ${array_execute[$i]}"
-			echo "  MACHINE: ${array_machine[$i]}"
+			echo "  MACHINE: $machine"
+			echo "  REMOTE USER: $remote_user"
 			echo "  PATH_FL: ${array_path[$i]}"
 			echo "  READ_FL: ${array_read[$i]}"
 			echo "  FILE_ST: ${array_start[$i]}"
@@ -158,8 +180,9 @@ echo "==================="
 	elif [ ${array_execute[$i]} = "test" ] || [ ${array_execute[$i]} = "testing" ];
 	then
 		echo "  !!! TEST MODE !!!"
+		echo "  Data only printed"
 		echo "  EXECUTE: ${array_execute[$i]}"
-		echo "  MACHINE: ${array_machine[$i]}"
+		echo "  MACHINE: $machine"
 		echo "  PATH_FL: ${array_path[$i]}"
 		echo "  READ_FL: ${array_read[$i]}"
 		echo "  FILE_ST: ${array_start[$i]}"
