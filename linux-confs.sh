@@ -39,11 +39,11 @@ case "$1" in
 	;;
 	*)
 		#echo "OK"
-		if [ -f $1 ] && [[ $2 == "" ]];
+		if [ -f $1 ] && [[ $2 = "" ]];
 		then
-			#echo "[ OK ] task file exist 1"
+			echo "[ OK ] task file exist 1"
 			source $taskFile
-			function_rewrite_data_main
+			function_main_control
 		elif [ -f $1 ] && [[ $2 != "" ]];
 		then
 
@@ -57,7 +57,7 @@ case "$1" in
 						#echo "[ OK ] horde file exist"
 						source $taskFile
 						source $hordeFile
-						
+
 						hordeLen=${#serverList[@]}
 						for (( horde=0; horde<$hordeLen; horde++ )); do
 						#for horde in ${serverList[@]} do
@@ -69,12 +69,13 @@ case "$1" in
 							then
 								echo "[ OK ] host available."
 								machine=${serverList[$horde]}
-								function_rewrite_data_main
+								remote_user=${remoteUser[$horde]}
+								function_main_control
 							else
 								echo "[ FAIL ] Host Unreachable... skip"
 							fi
 						done
-						
+
 					else
 						echo "No horde file... exit 3"
 						exit 3

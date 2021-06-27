@@ -3,19 +3,19 @@ serverList=(
 	"192.168.1.2"
 	"192.168.1.3"
 	"192.168.1.4"
-	"192.168.1.4"
+	"192.168.1.5"
 )
 hostName=(
 	"feri_pc"
 	"jani_pc"
 	"jozsi_pc"
 	"geza_pc"
-	"laci_pc"	
+	"laci_pc"
 )
 remoteUser=(
 	"admin1"
 	"admin2"
-	"admin1"
-	"admin0"
-	"admin7"
+	"admin3"
+	"admin4"
+	"admin5"
 )

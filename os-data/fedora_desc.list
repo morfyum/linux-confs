@@ -13,7 +13,7 @@ array_execute=(
 array_function=(
 	'rewrite_data'	# 01
 	'rewrite_data'	# 02
-	'rewrite_data'	# 03
+	'touch-file'	# 03
 	'rewrite_data'	# 04
 	'rewrite_data'	# 05
 )
@@ -27,7 +27,7 @@ array_path=(
 	'/etc/bashrc'	# 01
 	'/root/.bashrc'	# 02
 	'/etc/vimrc'	# 03
-	'/ddd/'			# 04
+	'/ddd_path/'	# 04
 	'/eee/'			# 05
 )
 # array_read >> array_read_input # read_input is can be any type of data: file, or hardcode
@@ -38,7 +38,7 @@ array_read=(
 	'ddd_read'						# 04
 	'eee_read'						# 05
 )
-# ONLY rewrite_data 
+# ONLY rewrite_data
 array_start=(
 	'# 000_GLOBAL_BASHRC_ETC_BASHRC'	# 01
 	'# 000_ROOT_BASHRC_ROOT_BASHRC'		# 02
