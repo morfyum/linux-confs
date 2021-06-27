@@ -1,0 +1,6 @@
+function="rewrite_data"
+execute="rw_d_exec 1"
+path="rw_d_path 1"
+read="rw_d_read 1"
+start="rw_d_start 1"
+end="rw_d_end 1"
